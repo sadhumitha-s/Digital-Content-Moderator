@@ -1,5 +1,4 @@
-# **DIGITAL CONTENT MODERATION**  
-## **SOFTWARE REQUIREMENTS SPECIFICATION (SRS)**  
+# **SOFTWARE REQUIREMENTS SPECIFICATION (SRS)**  
 **Date:22.1.2026**
 
 ## **1. Introduction**  
@@ -21,7 +20,9 @@ In-scope: Moderation of forum posts/comments/reviews via banned keywords, duplic
 
 ### **1.5 References**
 
-IEEE Std 830-1998 (SRS template); provided project brief on content moderation challenges.
+IEEE Std 830-1998 (SRS template); provided project brief on content moderation challenges.  
+
+---  
 
 ## **2. Overall Description**  
 ### **2.1 Product Perspective**
@@ -52,7 +53,9 @@ Pure SQL implementation: triggers, stored procedures, functions, views. No exter
 
 ### **2.6 Assumptions and Dependencies**
 
-Assumes DBMS supports triggers/stored procedures (e.g., PostgreSQL); stable schema; content limited to text (<10KB/post). Depends on accurate banned keyword lists maintained by admins.
+Assumes DBMS supports triggers/stored procedures (e.g., PostgreSQL); stable schema; content limited to text (<10KB/post). Depends on accurate banned keyword lists maintained by admins.  
+
+---  
 
 ## **3. System Features**  
 ### **3.1 Functional Requirements**
@@ -64,6 +67,8 @@ Assumes DBMS supports triggers/stored procedures (e.g., PostgreSQL); stable sche
 - **FR5**: Computes trust score = (100 \* (1 - violation_rate)) + (account_age_days / 365 \* 10) + (accurate_reports \* 5); updates via stored procedure on events.
 - **FR6**: Creates views: vw_flagged_content (all flags), vw_top_users (trust_score > 80), vw_audit_log (decision traces).
 - **FR7**: Trigger auto-runs score recalculation on flag resolution or report validation.
+
+---  
 
 ## **4. External Interface Requirements**  
 ### **4.1 User Interfaces**
@@ -80,7 +85,9 @@ DBMS native (PostgreSQL/MySQL); optional ODBC/JDBC for reporting tools.
 
 ### **4.4 Communications Interfaces**
 
-HTTP APIs (if web layer added) for content submission; internal via SQL transactions.
+HTTP APIs (if web layer added) for content submission; internal via SQL transactions.  
+
+---  
 
 ## **5. Nonfunctional Requirements**  
 ### **5.1 Performance Requirements**
